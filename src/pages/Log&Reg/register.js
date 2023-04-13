@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import {app} from '../../config/firebase_config'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getAuth,
         createUserWithEmailAndPassword,
         GoogleAuthProvider,
@@ -25,6 +25,8 @@ export default function Register() {
         .then((response) =>{
             //record the response
             console.log(response.user)
+            //when tab is closed auto logout 
+            sessionStorage.setItem('Token',response.user.accessToken)
             router.push('../profile/profilehome')
         })
     }
@@ -34,11 +36,20 @@ export default function Register() {
         .then((response) =>{
             //record the response
             console.log(response.user)
+            sessionStorage.setItem('Token',response.user.accessToken)
+            router.push('../profile/profilehome')
 
         })
 
     }
-
+        useEffect(() =>{
+            //creating a check
+            let token = sessionStorage.getItem('Token')
+            //if we have a token we cant go back to reg page 
+            if(token){
+                router.push('../profile/profilehome')
+            }
+        }, [])
 
   return (
     
