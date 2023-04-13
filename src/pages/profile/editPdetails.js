@@ -11,7 +11,7 @@ export default function profileEdit() {
     const [age,setAge] = useState(null);
     const [gender,setGender] = useState('');
     const [conemail,setconEmail] = useState('');
-    const [pnumber,setPnumber] = useState('');
+    const [pnumber,setPnumber] = useState(null);
     const [desc,setDesc] = useState('');
     const [quote,setQuote] = useState('');
     const [city,setCity] = useState('');
@@ -32,10 +32,10 @@ export default function profileEdit() {
     const addData = () =>{
         addDoc(databaseRef,{
             name :name,
-            age: age,
+            age: Number(age),
             gender: gender,
             contact_Email: conemail,
-            contact_number: pnumber,
+            contact_number: Number(pnumber),
             description: desc,
             quote: quote,
             country: country,
@@ -72,7 +72,7 @@ export default function profileEdit() {
      />
 
      <br></br>
-    <input type="text" placeholder="Age" 
+    <input type="number" placeholder="Age" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setAge(event.target.value)}
         value={age}
