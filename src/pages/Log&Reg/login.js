@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 
 
-export default function Register() {
+export default function Login() {
   return (
     
 <div className="grid h-screen place-items-center ">

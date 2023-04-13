@@ -7,3 +7,26 @@ const Header = () => {
 }
 
 export default Header
+
+import { useEffect } from 'react';
+    import { useRouter } from 'next/router';
+    useEffect(() =>{
+        //creating a check
+        let token = sessionStorage.getItem('Token')
+        //if we dont have a token we will pushed to reg page 
+        if(!token){
+            router.push('../Log&Reg/register')
+        }
+    }, [])
+
+
+
+    name
+    age 
+    gender
+     contact email
+     phone number 
+     description
+     quote
+     city 
+     country
