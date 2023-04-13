@@ -8,7 +8,7 @@ import { collection,addDoc } from 'firebase/firestore';
 export default function profileEdit() {
 
     const [name,setName] = useState('');
-    const [age,setAge] = useState('');
+    const [age,setAge] = useState(null);
     const [gender,setGender] = useState('');
     const [conemail,setconEmail] = useState('');
     const [pnumber,setPnumber] = useState('');
@@ -17,7 +17,7 @@ export default function profileEdit() {
     const [city,setCity] = useState('');
     const [country,setCountry] = useState('');
 
-    const databaseRef=collection(db,'User CRUD Data');
+    const databaseRef=collection(db,'User Data');
 
     let router = useRouter()
     useEffect(() =>{
@@ -31,7 +31,31 @@ export default function profileEdit() {
 
     const addData = () =>{
         addDoc(databaseRef,{
+            name :name,
+            age: age,
+            gender: gender,
+            contact_Email: conemail,
+            contact_number: pnumber,
+            description: desc,
+            quote: quote,
+            country: country,
+            city: city
 
+        })
+        .then(() =>{
+            alert('Details Added Succesfully')
+            setName('')
+            setAge(null)
+            setGender('')
+            setconEmail('')
+            setPnumber('')
+            setDesc('')
+            setQuote('')
+            setCountry('')
+            setCity('')
+        })
+        .catch((err) =>{
+            console.log(err);
         })
     }
 
@@ -104,7 +128,11 @@ export default function profileEdit() {
         value={city}
      />
      <br></br>
-    
+     <button 
+        className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
+        onClick={addData}
+        >Add Details
+    </button>
 
     <a href="/profile/profilehome"
                 className="font-medium text-blue-500 transition-colors hover:text-blue-700"
