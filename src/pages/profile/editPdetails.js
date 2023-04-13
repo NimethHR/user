@@ -44,55 +44,64 @@ export default function profileEdit() {
     <input type="text" placeholder="Your Name" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setName(event.target.value)}
+        value={name}
      />
 
      <br></br>
     <input type="text" placeholder="Age" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setAge(event.target.value)}
+        value={age}
      />
 
      <br></br>
     <input type="text" placeholder="Gender" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setGender(event.target.value)}
+        value={gender}
      />
 
      <br></br>
     <input type="email" placeholder="Contact Email" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setconEmail(event.target.value)}
+        value={conemail}
      />
 
      <br></br>
     <input type="number" placeholder="Contact Number" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setPnumber(event.target.value)}
+        value={pnumber}
      />
 
      <br></br>
      <textarea 
         placeholder="Description" 
         className="textarea textarea-bordered textarea-sm w-full max-w-xs"
-        onChange={event => setDesc(event.target.value)}>
+        onChange={event => setDesc(event.target.value)}
+        value={desc}>
     </textarea>
 
      <br></br>
     <input type="text" placeholder="A Qoute to Display" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setQuote(event.target.value)}
+        value={quote}
      />
 
      <br></br>
     <input type="text" placeholder="Country of Origin" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setCountry(event.target.value)}
+        value={country}
      />
 
      <br></br>
     <input type="text" placeholder="City of Origin" 
         className="input input-bordered w-full max-w-xs"
         onChange={event => setCity(event.target.value)}
+        value={city}
      />
      <br></br>
     
