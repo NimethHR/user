@@ -4,12 +4,13 @@ const Prdetails = () => {
     const [details, setDetails]=useState(initialState)
 
     //hook to fetch data
-        // useEffect { ()=>{
+        useEffect ( () => {
 
-        // }
+            const collectionRef = collection(db,"users")
+        }
 
 
-        // },
+        )
 
 
     return (
