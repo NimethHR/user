@@ -62,9 +62,9 @@ export default function pHome() {
           <p>{data.name}</p>
           <p>{data.age}</p>
           <p>{data.gender}</p>
-          <p>{data.conemail}</p>
-          <p>{data.pnumber}</p>
-          <p>{data.desc}</p>
+          <p>{data.contact_Email}</p>
+          <p>{data.contact_number}</p>
+          <p>{data.description}</p>
           <p>{data.quote}</p>
           <p>{data.city}</p>
           <p>{data.country}</p>
