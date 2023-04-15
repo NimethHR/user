@@ -9,17 +9,6 @@ import { data } from 'autoprefixer';
 export default function pHome() {
 
 
-  const [name,setName] = useState('');
-  const [age,setAge] = useState(null);
-  const [gender,setGender] = useState('');
-  const [conemail,setconEmail] = useState('');
-  const [pnumber,setPnumber] = useState(null);
-  const [desc,setDesc] = useState('');
-  const [quote,setQuote] = useState('');
-  const [city,setCity] = useState('');
-  const [country,setCountry] = useState('');
-
-
   const databaseRef=collection(db,'User Data');
   //get data to a array
   const[fireData, setFireData]= useState([]); 

@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import styles from '../../styles/Home.module.css';
 import {app,db} from '../../config/firebase_config'
 import { useRouter } from 'next/router';
-import { collection,addDoc } from 'firebase/firestore';
+import { collection,addDoc,getDocs } from 'firebase/firestore';
+import { data } from 'autoprefixer';
 
 export default function profileEdit() {
 
@@ -18,7 +19,8 @@ export default function profileEdit() {
     const [country,setCountry] = useState('');
 
     const databaseRef=collection(db,'User Data');
-
+    const[fireData, setFireData]= useState([]); 
+    
     let router = useRouter()
     useEffect(() =>{
         //creating a check
