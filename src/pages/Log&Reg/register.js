@@ -21,13 +21,16 @@ export default function Register() {
     const signUp = () => {
         //creates a new user for the given email and password 
         createUserWithEmailAndPassword(auth,email,password)
-        //if sign in successfull 
+        //if registering is successfull 
         .then((response) =>{
             //record the response
             console.log(response.user)
             //when tab is closed auto logout 
             sessionStorage.setItem('Token',response.user.accessToken)
             router.push('../profile/profilehome')
+        })
+        .catch(err => {
+            alert('This Email Is Already In use')
         })
     }
 
@@ -116,8 +119,5 @@ export default function Register() {
         </main>
     
     </div>
-    // <h1 className="text-3xl font-bold underline">
-    //   Hello world!
-    // </h1>
   )
 }

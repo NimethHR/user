@@ -7,6 +7,7 @@ import { collection,
           addDoc,
           getDocs,
           doc,
+          deleteDoc,
           updateDoc } from 'firebase/firestore';
 import { data } from 'autoprefixer';
 
@@ -43,6 +44,7 @@ export default function bucketlist() {
         .then(() =>{
             alert('Details Added Succesfully')
             setItem('')
+            getData()
         })
         .catch((err) =>{
             console.log(err);
@@ -69,11 +71,26 @@ export default function bucketlist() {
                 setItem('')
                 //so that when update button wil turn back to add item 
                 setIsUpdate(false)
+                getData()
                 
             })
             .catch((err) =>{
                 console.log(err)
             })
+    }
+
+    //to delete
+    const deleteitem = (id) =>{
+        let fieldtodelete = doc(db, 'BucketList',id)
+        deleteDoc(fieldtodelete)
+
+        .then(() => {
+            alert('Item Deleted')
+            getData()
+        })
+        .catch((err) =>{
+                alert('Cannot delete the item ')
+        })
     }
 
 //to read
@@ -93,7 +110,7 @@ export default function bucketlist() {
     
 <div className={styles.main}>
     <p className="text-4xl">Your Bucket List</p>
-    
+
     <br></br><br></br>
     <input type="text" placeholder="Enter a Item " 
         className="input input-bordered w-full max-w-xs"
@@ -122,6 +139,7 @@ export default function bucketlist() {
     <div className="card card-side bg-base-100 shadow-xl w-3/5 my-5">
   
   <div className="card-body">
+ 
     <h2 className="card-title">{data.item}</h2>
     <div className="card-actions justify-end">
         <button 
@@ -131,6 +149,7 @@ export default function bucketlist() {
         </button>
         <button 
             className="btn btn-primary sm:btn-sm"
+            onClick={() =>deleteitem(data.id)}
             >Delete
         </button>
     </div>

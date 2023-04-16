@@ -13,6 +13,12 @@ export default function pHome() {
   //get data to a array
   const[fireData, setFireData]= useState([]); 
 
+  //log out
+    const logout = (() => {
+        sessionStorage.removeItem('Token')
+        router.push('../Log&Reg/register')
+    })
+
     let router = useRouter()
     useEffect(() =>{
         //creating a check
@@ -44,6 +50,10 @@ export default function pHome() {
 <div  className={styles.main}>
     <p className="text-4xl">Profile</p>
     <br></br>
+
+    <button className="btn btn-primary md:btn-md"
+          onClick={logout}
+    >Log Out</button>
 
     {fireData.map((data) =>{
       return(
