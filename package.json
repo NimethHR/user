@@ -10,7 +10,8 @@
     "firebase": "^9.19.1",
     "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "use-places-autocomplete": "^4.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

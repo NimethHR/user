@@ -27,7 +27,7 @@ export default function Register() {
             console.log(response.user)
             //when tab is closed auto logout 
             sessionStorage.setItem('Token',response.user.accessToken)
-            router.push('../profile/profilehome')
+            router.push('../profile/addUdetails')
         })
         .catch(err => {
             alert('This Email Is Already In use')
@@ -58,10 +58,15 @@ export default function Register() {
     
     <div className="grid h-screen place-items-center ">
     {/*title*/}   
-        <main className={styles.main}><h1></h1>
+        <main className={styles.main}>
+        
             <p className="text-4xl font-bold ">Register</p>
             <br></br>
 
+        <ul className="steps my-5 ">
+             <li className="step step-primary ">Step 1 </li>
+             <li className="step">Step 2</li>
+        </ul>
        { /*label and input space for the email*/ }
         <label className="label">
             <span className="label-text">

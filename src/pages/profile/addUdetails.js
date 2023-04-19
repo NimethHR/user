@@ -67,6 +67,7 @@ let currentDate = `${day}-${month}-${year}`;
             setQuote('')
             setCountry('')
             setCity('')
+            router.push('../profile/profilehome')
         })
         .catch((err) =>{
             console.log(err);
@@ -79,6 +80,11 @@ let currentDate = `${day}-${month}-${year}`;
     
 <div className={styles.main}>
     <p className="text-4xl">Profile</p>
+    
+    <ul className="steps my-5 ">
+             <li className="step step-primary ">Step 1 </li>
+             <li className="step step-primary">Step 2</li>
+    </ul>
     
     <br></br>
     <input type="text" placeholder="Your Name" 
@@ -95,7 +101,7 @@ let currentDate = `${day}-${month}-${year}`;
      />
 
      <br></br>
-    <input type="text" placeholder="Gender" 
+    <input type="text" placeholder="Gender"
         className="input input-bordered w-full max-w-xs"
         onChange={event => setGender(event.target.value)}
         value={gender}
