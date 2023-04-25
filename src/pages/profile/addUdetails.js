@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import styles from '../../styles/Home.module.css';
-import {app,db} from '../../config/firebase_config'
+import {app,db,auth} from '../../config/firebase_config'
 import { useRouter } from 'next/router';
-import { collection,addDoc,getDocs } from 'firebase/firestore';
+import { collection,addDoc,getDocs,doc,setDoc } from 'firebase/firestore';
 import { data } from 'autoprefixer';
+import { AuthContext } from '../../context/auth';
 
 export default function profileEdit() {
 
@@ -17,10 +18,17 @@ export default function profileEdit() {
     const [quote,setQuote] = useState('');
     const [city,setCity] = useState('');
     const [country,setCountry] = useState('');
-    
 
-    const databaseRef=collection(db,'User Data');
+
+    const crf =auth?.currentUser?.uid
+    const crf1 = String(crf)
+
+    //const databaseRef = doc(db,'User Data/${crf}');
+    const databaseRef=doc(db,`User Data/${crf}`);
+    //const databaseRef2=collection(db,'Registration Data');
+
     const[fireData, setFireData]= useState([]); 
+    
 
 //to get current date
 const date = new Date();
@@ -39,11 +47,14 @@ let currentDate = `${day}-${month}-${year}`;
         //if we dont have a token we will pushed to reg page 
         if(!token){
             router.push('../Log&Reg/register')
+            
         }
     }, [])
 
+    
+
     const addData = () =>{
-        addDoc(databaseRef,{
+        setDoc(databaseRef,{
             name :name,
             age: Number(age),
             gender: gender,
@@ -53,7 +64,8 @@ let currentDate = `${day}-${month}-${year}`;
             quote: quote,
             country: country,
             city: city,
-            currentDate:date
+            currentDate:currentDate,
+            uid : crf1
 
         })
         .then(() =>{

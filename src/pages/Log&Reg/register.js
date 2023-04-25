@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
-import {app} from '../../config/firebase_config'
+import {app,auth} from '../../config/firebase_config'
 import { useEffect, useState } from 'react';
 import { getAuth,
         createUserWithEmailAndPassword,
@@ -18,9 +18,9 @@ export default function Register() {
     const [email,setEmail]= useState('');
     const [password, setPassword]=useState('');
 
-    const signUp = () => {
+    const signUp = async() => {
         //creates a new user for the given email and password 
-        createUserWithEmailAndPassword(auth,email,password)
+        await createUserWithEmailAndPassword(auth,email,password)
         //if registering is successfull 
         .then((response) =>{
             //record the response

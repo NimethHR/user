@@ -30,7 +30,7 @@ export default function Login() {
             router.push('../profile/profilehome')
         })
         .catch(err => {
-            alert('This Email Does Not Exist')
+            alert('Login Failed, Please Try Again with Correct Credentials')
         })
         .catch
     }
